@@ -10,14 +10,13 @@ class HX711(AnalogInputDevice):
     channel_gain_option = ["A128", "B32", "A64"]
     PD_SCK_PULSES = {"A128": 25, "B32": 26, "A64": 27}
 
-    def __init__(self, channel_gain="A128", max_voltage=3.3, **spi_args):
+    def __init__(self, bits=24, channel_gain="A128", max_voltage=3.3, **spi_args):
         if channel_gain not in self.channel_gain_option:
             raise InputDeviceError("invalid channel gain options")
         self._min_value = -0x800000
         self._range = 0x7FFFFF - self._min_value  # 0x7FFFFF is max output
-        self.bits = 24
         self._sck_pulses = self.PD_SCK_PULSES[channel_gain]
-        super().__init__(self.bits, max_voltage, **spi_args)
+        super().__init__(bits, max_voltage, **spi_args)
 
     def _read(self):
         return self._words_to_int(self._spi.transfer(self._send())[:-1], self.bits)
