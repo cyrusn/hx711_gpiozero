@@ -3,6 +3,7 @@
 ## Description
 
 This library allows to drive a HX711 load cess amplifier with a Raspberry Pi by using `gpiozero` library.
+
 - to set channel and gain
 - to read raw value
 
@@ -16,7 +17,7 @@ from hx711_gpiozero import HX711
 from time import sleep
 
 spi = HX711()
-print("Initiatin ...")
+print("Initiating ...")
 init_reading = spi.value
 
 sleep(1)
