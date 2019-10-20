@@ -12,11 +12,11 @@ This library allows to drive a HX711 load cess amplifier with a Raspberry Pi by 
 
 ```py
   
-from hx711 import HX711
+from hx711_gpiozero import HX711
 from time import sleep
 
 spi = HX711()
-print("Initiating ...")
+print("Initiatin ...")
 init_reading = spi.value
 
 sleep(1)
