@@ -1,4 +1,4 @@
-# HX711 driver library
+# HX711 driver library [Depreciated]
 
 ## Description
 
